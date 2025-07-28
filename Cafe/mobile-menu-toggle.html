@@ -1,0 +1,26 @@
+<!-- Add this button to your header-content div in index.php -->
+<button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+    <i class="fas fa-bars"></i>
+</button>
+
+<!-- Add this JavaScript function to handle mobile menu -->
+<script>
+function toggleMobileMenu() {
+    const sidebar = document.querySelector('.admin-sidebar');
+    if (sidebar) {
+        sidebar.classList.toggle('open');
+    }
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(e) {
+    const sidebar = document.querySelector('.admin-sidebar');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    
+    if (sidebar && sidebar.classList.contains('open') && 
+        !sidebar.contains(e.target) && 
+        !toggle.contains(e.target)) {
+        sidebar.classList.remove('open');
+    }
+});
+</script>
